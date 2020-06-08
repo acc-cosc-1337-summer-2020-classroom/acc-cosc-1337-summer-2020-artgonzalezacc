@@ -1,5 +1,6 @@
 //write include statements
-
+#include "input.h"
+#include <iostream>
 
 //write namespace using statements
 
@@ -12,9 +13,22 @@ Display the total:
 Total: 100
 
 */
+
+using std::cout;	using std::cin; 
+
 int main() 
 {
-	
-	
+	int units;
+	double rate;
+
+	cout<<"Enter units: ";
+	cin>>units;
+	cout<<"Enter rate: ";
+	cin>>rate;
+
+	double total = get_total(units, rate);
+
+	cout<<"Total: "<<total;
+
 	return 0;
 }

@@ -3,6 +3,19 @@
 //the sum of all the squares of that number from 1 to the number. 
 //Example: sum_of_squares(4) 
 //1*1 + 2 * 2 + 3*3 + 4*4 = 30
+int sum_of_squares(int num)
+{
+    auto sum{0};
+    auto counter{0};
+
+    while(counter <= num)
+    {
+        sum = sum + counter * counter;
+        counter++;
+    }
+
+    return sum;
+}
 
 
 //Using a while loop write code for display function that accepts a string and displays 

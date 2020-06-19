@@ -5,7 +5,8 @@
 using std::cin;
 
 int main() 
-{/*
+{
+	/*
 	//Creating strings
 	std::string name1;
 	std::cout<<"name1 "<<name1<<"\n";

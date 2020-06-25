@@ -12,7 +12,7 @@ private:
     void display_menu();//helper functions..utility functions
     void set_choice();
     void handle_transaction();
-    BankAccount account;//our user-defined class--composition
+    BankAccount& account;//our user-defined class--composition
     int choice;
 
 };

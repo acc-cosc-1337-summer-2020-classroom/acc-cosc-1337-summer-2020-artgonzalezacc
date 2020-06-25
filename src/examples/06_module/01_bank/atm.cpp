@@ -3,15 +3,28 @@
 
 using std::cout;    using std::cin;
 
+void ATM::scan_card()
+{
+    cout<<"Welcome to ACC community bank\n";
+    cout<<"Scan card: \n";
+    cin>>selected_account_index;
+}
+
 void ATM::run()
 {
     do
-	{
-		display_menu();
-		set_choice();
+    {
+        scan_card();
 
-		handle_transaction();
-	} while (choice != 4);
+        do
+        {
+            display_menu();
+            set_choice();
+
+            handle_transaction();
+        } while (choice != 4);
+    } while (true);
+
 }
 
 void ATM::display_menu()
@@ -45,15 +58,15 @@ void ATM::handle_transaction()
     case OPTION::DEPOSIT:
         cout<<"Enter deposit: ";
         cin>>amount;
-        account.deposit(amount);
+        accounts[selected_account_index].deposit(amount);
         break;
     case OPTION::WITHDRAW:
         cout<<"Enter withdraw: ";
         cin>>amount;
-        account.withdraw(amount);
+        accounts[selected_account_index].withdraw(amount);
         break;
     case OPTION::DISPLAY:
-        cout<<account.get_balance()<<"\n";
+        cout<<accounts[selected_account_index].get_balance()<<"\n";
         break;
     default:
         cout<<"Exiting...";

@@ -1,6 +1,20 @@
 //bank_account.h
 #include<iostream>
-#include<vector>
+
+#ifndef BRANCH_BANK_H
+#define BRANCH_BANK_H
+
+class BranchBank
+{
+public:
+    BranchBank(int b) : branch_balance{b}{}
+    void update_balance(int b);
+    int get_branch_balance()const{return branch_balance;}
+private:
+    int branch_balance;
+};
+
+#endif
 
 #ifndef BANK_ACCOUNT_H//header guards
 #define BANK_ACCOUNT_H
@@ -18,18 +32,10 @@ public:
     void deposit(int amount);
     void withdraw(int amount);
     static int get_bank_balance(){return bank_balance;}
+    friend void BranchBank::update_balance(int b);
 private:
     int balance;//lock this variable
     static int bank_balance;
 };
-
-
-BankAccount& get_account(int i);//free function
-
-void display_menu();
-
-int get_choice();
-
-void handle_transaction(BankAccount& account, int choice);
 
 #endif

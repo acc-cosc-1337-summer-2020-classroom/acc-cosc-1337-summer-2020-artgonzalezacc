@@ -51,22 +51,18 @@ void ATM::set_choice()
 
 void ATM::handle_transaction()
 {
-    int amount;
+    accounts[selected_account_index].set_option(static_cast<OPTION>(choice));
 
     switch (static_cast<OPTION>(choice))
     {
     case OPTION::DEPOSIT:
-        cout<<"Enter deposit: ";
-        cin>>amount;
-        accounts[selected_account_index].deposit(amount);
+        cin>>accounts[selected_account_index];
         break;
     case OPTION::WITHDRAW:
-        cout<<"Enter withdraw: ";
-        cin>>amount;
-        accounts[selected_account_index].withdraw(amount);
+        cin>>accounts[selected_account_index];
         break;
     case OPTION::DISPLAY:
-        cout<<accounts[selected_account_index].get_balance()<<"\n";
+        cout<<accounts[selected_account_index];
         break;
     default:
         cout<<"Exiting...";

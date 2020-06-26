@@ -27,14 +27,18 @@ class BankAccount
 
 public:
     BankAccount() : BankAccount(0){}//delegating constructor
-    BankAccount(int b) : balance{b} { bank_balance += balance; } //initializer list
+    explicit BankAccount(int b) : balance{b} { bank_balance += balance; } //initializer list
     int get_balance() const {return balance;}//inline class function
     void deposit(int amount);
     void withdraw(int amount);
+    void set_option(OPTION o){option = o;};
     static int get_bank_balance(){return bank_balance;}
     friend void BranchBank::update_balance(int b);
+    friend std::ostream& operator<<(std::ostream& out, const BankAccount& account);
+    friend std::istream& operator>>(std::istream& in, BankAccount& account);
 private:
     int balance;//lock this variable
+    OPTION option;
     static int bank_balance;
 };
 

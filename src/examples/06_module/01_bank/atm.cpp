@@ -70,3 +70,20 @@ void ATM::handle_transaction()
     }
 
 }
+
+void display_account(std::unique_ptr<BankAccount>& account)
+{
+    std::cout<<*account<<"\n";
+}
+
+void display_account_val(std::unique_ptr<BankAccount> account)
+{
+    std::cout<<*account<<"\n";
+}
+
+std::unique_ptr<BankAccount> get_account()
+{
+    std::unique_ptr<BankAccount> a = std::make_unique<BankAccount>(1000);
+
+    return a;
+}

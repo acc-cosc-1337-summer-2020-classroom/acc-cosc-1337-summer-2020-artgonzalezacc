@@ -28,7 +28,7 @@ class BankAccount
 public:
     BankAccount() : BankAccount(0){}//delegating constructor
     explicit BankAccount(int b) : balance{b} { bank_balance += balance; } //initializer list
-    int get_balance() const {return balance;}//inline class function
+    virtual int get_balance() const {return balance;}//inline class function
     void deposit(int amount);
     void withdraw(int amount);
     void set_option(OPTION o){option = o;};

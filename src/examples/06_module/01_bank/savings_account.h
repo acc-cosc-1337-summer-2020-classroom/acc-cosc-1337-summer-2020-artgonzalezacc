@@ -9,7 +9,8 @@ class SavingsAccount: public BankAccount
 public:
     SavingsAccount(){}
     SavingsAccount(int b): BankAccount(b){}
-    int get_balance() const{return BankAccount::get_balance() * 10;}
+    int get_balance() const{return BankAccount::get_balance() * 1050 / 1000 * 1000 / 12000+
+                                   BankAccount::get_balance();}
 };
 
 #endif

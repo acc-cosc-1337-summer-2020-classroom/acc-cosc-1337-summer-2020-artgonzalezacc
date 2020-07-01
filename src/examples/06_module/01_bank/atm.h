@@ -1,4 +1,6 @@
 //atm.h
+#include<iostream>
+#include<memory>
 #include<vector>
 
 #include "bank_account.h"
@@ -21,3 +23,7 @@ private:
 };
 
 #endif
+
+void display_account(std::unique_ptr<BankAccount>& account);
+void display_account_val(std::unique_ptr<BankAccount> account);
+std::unique_ptr<BankAccount> get_account();

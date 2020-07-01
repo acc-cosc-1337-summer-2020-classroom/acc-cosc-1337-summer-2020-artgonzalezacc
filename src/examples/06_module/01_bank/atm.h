@@ -4,6 +4,8 @@
 #include<vector>
 
 #include "bank_account.h"
+#include "checking_account.h"
+#include "savings_account.h"
 #ifndef ATM_H
 #define ATM_H
 
@@ -19,7 +21,7 @@ private:
     void handle_transaction();
     int choice;
     int selected_account_index;
-    std::vector<BankAccount> accounts{BankAccount(100), BankAccount(200), BankAccount(300)};
+    std::vector<BankAccount> accounts{CheckingAccount(100), BankAccount(200)};
 };
 
 #endif

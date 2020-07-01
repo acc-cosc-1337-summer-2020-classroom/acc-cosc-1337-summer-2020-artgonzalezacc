@@ -11,10 +11,10 @@ using std::unique_ptr;	using std::make_unique;
 
 int main()
 {
-	unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap
+/*	unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap
 	cout<<a->get_balance()<<"\n";
 	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
-	cout<<c->get_balance()<<"\n";
+	cout<<c->get_balance()<<"\n";*/
 
 
 
@@ -31,8 +31,8 @@ int main()
 	cout<<s1;//base class balance*/
 	
 
-	//ATM atm;
-	//atm.run();
+	ATM atm;
+	atm.run();
 
 	
 	/*BankAccount account;

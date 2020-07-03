@@ -15,6 +15,10 @@ int main()
 {
 	srand(time(NULL));//force true random number generation
 
+	BankAccount* account = new CheckingAccount(500);
+	cout<<account->get_balance();
+	delete account;
+	account = nullptr;
 
 	/*unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap
 	cout<<a->get_balance()<<"\n";
@@ -41,8 +45,8 @@ int main()
 	cout<<s1;//base class balance*/
 	
 
-	ATM atm;
-	atm.run();
+	//ATM atm;
+	//atm.run();
 
 	
 	/*BankAccount account;

@@ -3,6 +3,11 @@
 
 using std::cout; using std::cin;
 
+int BankAccount::get_balance()const
+{
+    return balance;
+}
+
 void BankAccount::deposit(int amount)
 {
     if(amount > 0)

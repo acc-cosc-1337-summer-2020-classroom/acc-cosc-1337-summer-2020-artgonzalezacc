@@ -22,13 +22,13 @@ private:
 enum transaction{ DEPOSIT=1, WITHDRAW=2, DISPLAY=3};
 enum class OPTION{DEPOSIT=1, WITHDRAW=2, DISPLAY=3, EXIT=4};//c++11 
 
-class BankAccount
+class BankAccount//abstract class
 {
 
 public:
     BankAccount() : BankAccount(0){}//delegating constructor
     explicit BankAccount(int b) : balance{b} { bank_balance += balance; } //initializer list
-    virtual int get_balance() const {return balance;}//inline class function
+    virtual int get_balance() const = 0;//pure virtual function
     void deposit(int amount);
     void withdraw(int amount);
     void set_option(OPTION o){option = o;};

@@ -2,8 +2,10 @@
 #include "bank_account.h"
 #include "checking_account.h"
 #include "savings_account.h"
+#include "customer.h"
 #include<iostream>
 #include<memory>
+#include<time.h>
 
 using std::cout;
 using std::cin;
@@ -11,13 +13,21 @@ using std::unique_ptr;	using std::make_unique;
 
 int main()
 {
-/*	unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap
+	srand(time(NULL));//force true random number generation
+
+
+	/*unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap
 	cout<<a->get_balance()<<"\n";
 	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
-	cout<<c->get_balance()<<"\n";*/
+	cout<<c->get_balance()<<"\n";
+	std::vector<unique_ptr<BankAccount>> accounts;
+	accounts.push_back(std::move(a));
+	accounts.push_back(std::move(c));
 
-
-
+	for(auto& account: accounts)
+	{
+		cout<<account->get_balance()<<"\n";
+	}*/
 
 	/*CheckingAccount c(1000);
 	cout<<c;

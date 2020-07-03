@@ -4,6 +4,7 @@
 #include<vector>
 
 #include "bank_account.h"
+#include "customer.h"
 #include "checking_account.h"
 #include "savings_account.h"
 #ifndef ATM_H
@@ -12,7 +13,7 @@
 class ATM
 {
 public:
-    ATM(){}
+    ATM();
     void run();
 private:
     void scan_card();
@@ -21,7 +22,9 @@ private:
     void handle_transaction();
     int choice;
     int selected_account_index;
-    std::vector<BankAccount> accounts{CheckingAccount(100), BankAccount(200)};
+    int selected_customer_index;
+    std::vector<Customer> customers;
+    
 };
 
 #endif

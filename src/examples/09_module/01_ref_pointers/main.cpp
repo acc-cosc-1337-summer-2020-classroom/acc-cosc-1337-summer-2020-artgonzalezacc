@@ -6,7 +6,7 @@ using std::cout;
 int main() 
 {
 	//references
-	int num{10};
+/*	int num{10};
 	int& num_ref = num;
 	cout<<"value of num: "<<num<<"\n";
 	cout<<"address of num: "<<&num<<"\n";
@@ -37,7 +37,16 @@ int main()
 	valid_ptr = nullptr;
 
 	*second_ptr = 10;
-	cout<<second_ptr;
+	cout<<second_ptr;*/
+
+	int* valid_ptr = get_int_pointer();
+	int* dangling_pointer = valid_ptr;
+	//lines of code
+	delete valid_ptr;
+	valid_ptr = nullptr;
+
+	//use the dangling pointer
+	cout<<*dangling_pointer;
 
 	return 0;
 }

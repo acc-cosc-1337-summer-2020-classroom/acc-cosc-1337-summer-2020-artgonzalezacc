@@ -6,19 +6,47 @@
 #include<iostream>
 #include<memory>
 #include<time.h>
+#include<vector>
 
 using std::cout;
 using std::cin;
 using std::unique_ptr;	using std::make_unique;
 
+void test_delete()
+{
+	std::vector<std::unique_ptr<BankAccount>> accounts;
+	std::unique_ptr<BankAccount> s = std::make_unique<SavingsAccount>();
+	std::unique_ptr<BankAccount> c = std::make_unique<CheckingAccount>();
+	accounts.push_back(std::move(s));
+	accounts.push_back(std::move(c));
+
+	for(auto& account: accounts)
+	{
+		cout<<account->get_balance()<<"\n";
+	}
+		
+}
+
 int main()
 {
 	srand(time(NULL));//force true random number generation
 
-	BankAccount* account = new CheckingAccount(500);
-	cout<<account->get_balance();
+	/*BankAccount* account = new CheckingAccount(500);
+	
+	BankAccount* account2 = account;
+	cout<<account->get_balance()<<"\n";
+	cout<<account2->get_balance()<<"\n";
+
+	account->deposit(50);
+	cout<<account->get_balance()<<"\n";
+	cout<<account2->get_balance()<<"\n";
 	delete account;
 	account = nullptr;
+	account2 = nullptr;*/
+	
+	
+	test_delete();
+	
 
 	/*unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap
 	cout<<a->get_balance()<<"\n";

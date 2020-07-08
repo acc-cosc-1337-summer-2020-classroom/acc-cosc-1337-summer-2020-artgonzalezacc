@@ -26,7 +26,7 @@ class BankAccount//abstract class
 {
 
 public:
-    BankAccount() : BankAccount(0){}//delegating constructor
+    BankAccount() : BankAccount(0){std::cout<<"\ncreate memory\n";ptr_value = new int(10);}//delegating constructor
     explicit BankAccount(int b) : balance{b} { bank_balance += balance; } //initializer list
     virtual int get_balance() const = 0;//pure virtual function
     void deposit(int amount);
@@ -36,10 +36,14 @@ public:
     friend void BranchBank::update_balance(int b);
     friend std::ostream& operator<<(std::ostream& out, const BankAccount& account);
     friend std::istream& operator>>(std::istream& in, BankAccount& account);
+    int get_ptr_value()const{return *ptr_value;}
+    void set_ptr_value(int value){*ptr_value = value;}
+    ~BankAccount(){std::cout<<"delete memory\n";delete ptr_value; ptr_value =nullptr;}
 private:
     int balance;//lock this variable
     OPTION option;
     static int bank_balance;
+    int* ptr_value;
 };
 
 #endif

@@ -12,20 +12,6 @@ using std::cout;
 using std::cin;
 using std::unique_ptr;	using std::make_unique;
 
-void test_delete()
-{
-	std::vector<std::unique_ptr<BankAccount>> accounts;
-	std::unique_ptr<BankAccount> s = std::make_unique<SavingsAccount>();
-	std::unique_ptr<BankAccount> c = std::make_unique<CheckingAccount>();
-	accounts.push_back(std::move(s));
-	accounts.push_back(std::move(c));
-
-	for(auto& account: accounts)
-	{
-		cout<<account->get_balance()<<"\n";
-	}
-		
-}
 
 int main()
 {
@@ -44,8 +30,21 @@ int main()
 	account = nullptr;
 	account2 = nullptr;*/
 	
+	{
+		std::vector<std::unique_ptr<BankAccount>> accounts;
+		std::unique_ptr<BankAccount> s = std::make_unique<SavingsAccount>();
+		std::unique_ptr<BankAccount> c = std::make_unique<CheckingAccount>();
+		accounts.push_back(std::move(s));
+		accounts.push_back(std::move(c));
+
+		for(auto& account: accounts)
+		{
+			cout<<account->get_balance()<<"\n";
+		}
+		
+	}
+
 	
-	test_delete();
 	
 
 	/*unique_ptr<BankAccount> a = make_unique<SavingsAccount>(600);//heap

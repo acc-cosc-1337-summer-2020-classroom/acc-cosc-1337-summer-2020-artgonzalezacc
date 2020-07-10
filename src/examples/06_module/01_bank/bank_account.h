@@ -26,7 +26,7 @@ class BankAccount//abstract class
 {
 
 public:
-    BankAccount() : BankAccount(0){std::cout<<"\ncreate memory\n";ptr_value = new int(10);}//delegating constructor
+    BankAccount() : BankAccount(0){std::cout<<"create memory\n";ptr_value = new int(10);}//delegating constructor
     explicit BankAccount(int b) : balance{b} { bank_balance += balance; } //initializer list
     virtual int get_balance() const = 0;//pure virtual function
     void deposit(int amount);

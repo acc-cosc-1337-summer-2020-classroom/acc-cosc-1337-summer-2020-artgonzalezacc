@@ -1,11 +1,15 @@
+
 #include<iostream>
 #include<string>
 
 using std::cout;
 using std::cin;
+
+
 int main() 
 {
-	
+
+	/*
 	const int SIZE = 3;
 	//allocate stack array
 	std::string names[SIZE]{"Joe", "Mary", "John"};
@@ -18,7 +22,7 @@ int main()
 	//add values to array elements	
 	for(int i=0; i < SIZE; ++i)
 	{
-		cout<<"\Enter hours: ";
+		cout<<"Enter hours: ";
 		cin>>hours[i];
 		cout<<"Enter rate: ";
 		cin>>pay_rate[i];
@@ -38,7 +42,7 @@ int main()
 	}
 
 	cout<<total_salary<<"\n";
-	
+	*/
 
 	/*
 	std::string names[3] {"Mary", "John"};

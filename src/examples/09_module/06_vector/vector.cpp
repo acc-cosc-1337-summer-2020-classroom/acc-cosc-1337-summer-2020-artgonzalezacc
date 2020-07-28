@@ -1,8 +1,16 @@
 #include "vector.h"
 #include<iostream>
 //
-Vector::Vector(size_t sz)
-: size{0}, space{sz}, elements{new int[sz]}
+template<typename T>
+Vector<T>::Vector()
+: size{0}, space{0}, elements{nullptr}
+{
+
+}
+
+template<typename T>
+Vector<T>::Vector(size_t sz)
+: size{0}, space{sz}, elements{new T[sz]}
 {
     for(size_t i=0; i < sz; ++i)
     {
@@ -16,8 +24,9 @@ Vector::Vector(size_t sz)
 2-initialize memory for v2
 3-copy element values from v1 into v2
 */
-Vector::Vector(const Vector& v)
-: size{v.size}, elements{new int[v.size]}
+template<typename T>
+Vector<T>::Vector(const Vector<T>& v)
+: size{v.size}, elements{new T[v.size]}
 {
     for(size_t i=0; i < size; ++i)
     {
@@ -32,9 +41,15 @@ Vector::Vector(const Vector& v)
 4-Point elements memory to temporary memory
 5-Return a reference to this vector
 */
-Vector& Vector::operator=(const Vector& v)
+template<typename T>
+Vector<T>& Vector<T>::operator=(const Vector<T>& v)
 {
-    int* temp = new int[v.size];
+    if(this == &v)
+    {
+        return *this;
+    }
+
+    T* temp = new T[v.size];
 
     for(size_t i=0; i < v.size; ++i)
     {
@@ -53,7 +68,8 @@ Get the dynamic memory from v
 Get the size from v
 Point the v.nums to nullptr
 */
-Vector::Vector(Vector && v)
+template<typename T>
+Vector<T>::Vector(Vector<T> && v)
 	: size{v.size}, elements{v.elements}
 {
 	v.size = 0;
@@ -67,8 +83,14 @@ Get the size from v
 Point v.nums to nullptr
 Set v.size to 0
 */
-Vector & Vector::operator=(Vector && v)
+template<typename T>
+Vector<T> & Vector<T>::operator=(Vector<T> && v)
 {
+    if(this == &v)
+    {
+        return *this;
+    }
+
 	delete elements;
 	elements = v.elements;
 	size = v.size;
@@ -86,14 +108,15 @@ Delete the old memory array (nums)
 Set nums to temporary memory array
 Set space = new allocation
 */
-void Vector::Reserve(size_t new_allocation) 
+template<typename T>
+void Vector<T>::Reserve(size_t new_allocation) 
 {
 	if (new_allocation <= space) 
 	{
 		return;
 	}
 
-	int* temp = new int[new_allocation];
+	T* temp = new T[new_allocation];
 
 	for (size_t i = 0; i < size; ++i) 
 	{
@@ -111,7 +134,8 @@ void Vector::Reserve(size_t new_allocation)
 Reserve space
 Initialize element values beyond size to 0
 */
-void Vector::Resize(size_t new_allocation) 
+template<typename T>
+void Vector<T>::Resize(size_t new_allocation) 
 {
 	Reserve(new_allocation);
 
@@ -123,7 +147,8 @@ void Vector::Resize(size_t new_allocation)
 	size = new_allocation;
 }
 
-void Vector::Push_Back(int value)
+template<typename T>
+void Vector<T>::Push_Back(T value)
 {
 	if (space == 0) 
 	{
@@ -138,21 +163,25 @@ void Vector::Push_Back(int value)
 	++size;
 }
 
-Vector::~Vector()
+template<typename T>
+Vector<T>::~Vector()
 {
     std::cout<<"\nrelease memory\n";
     delete[] elements;
 }
 
+template class Vector<int>;
+template class Vector<double>;
+
 //NOT PART OF THE VECTOR CLASS!!!!!
 void use_stack_vector()
 {
-    Vector v1(3);
+    Vector<int> v1(3);
 }
 
 void use_heap_vector()
 {
-    Vector* v1 = new Vector(3);
+    Vector<int>* v1 = new Vector<int>(3);
 
     delete v1;//to call the destructor
 }
